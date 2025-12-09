@@ -76,28 +76,31 @@ const App: React.FC = () => {
     <div className="flex flex-col min-h-[100dvh] bg-slate-950 text-slate-100">
       <main className="flex-grow flex flex-col items-center px-4 pb-6 w-full max-w-md mx-auto gap-6">
           
-          {/* Home, Privacy Policy and Terms of Service Links - Top of Page */}
-          <div className="flex items-center justify-center gap-4 pt-6 pb-4 w-full">
-            <span className="text-sm text-slate-400 font-medium">Home</span>
-            <span className="text-slate-500">•</span>
+          {/* Navigation Bar - Top of Page */}
+          <nav className="flex items-center justify-center gap-2 pt-6 pb-4 w-full px-4">
+            <a 
+              href="https://pesopro-curreny-converter.vercel.app"
+              className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
+            >
+              Home
+            </a>
             <a 
               href="https://pesopro-curreny-converter.vercel.app/privacy-policy.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-slate-300 hover:text-white transition-colors underline underline-offset-2 font-medium"
+              className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
             >
               Privacy Policy
             </a>
-            <span className="text-slate-500">•</span>
             <a 
               href="https://pesopro-curreny-converter.vercel.app/terms-of-service.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-slate-300 hover:text-white transition-colors underline underline-offset-2 font-medium"
+              className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
             >
               Terms of Service
             </a>
-          </div>
+          </nav>
 
           {/* Main Converter Card */}
           <div className="w-full flex-none">
