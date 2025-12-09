@@ -29,32 +29,31 @@
         .top-nav {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 8px;
             margin-bottom: 40px;
-            padding: 12px;
-            background: #1a1a1a;
-            border-radius: 8px;
-            border: 1px solid #333333;
+            padding: 24px 16px 16px 16px;
         }
         .nav-link {
-            padding: 10px 20px;
-            color: #ffffff;
+            padding: 8px 16px;
+            color: #cbd5e1;
             text-decoration: none;
             border-radius: 6px;
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s;
-            border: 1px solid transparent;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
         }
         .nav-link:hover {
-            background: #333333;
+            background: rgba(51, 65, 85, 0.5);
             color: #ffffff;
             text-decoration: none;
         }
         .nav-link.active {
-            background: #333333;
+            background: rgba(51, 65, 85, 0.5);
             color: #ffffff;
-            border-color: #555555;
+            border-color: #334155;
         }
         h1 {
             color: #ffffff;
@@ -108,9 +107,10 @@
             .top-nav {
                 flex-wrap: wrap;
                 gap: 6px;
+                padding: 16px 8px;
             }
             .nav-link {
-                padding: 8px 16px;
+                padding: 8px 12px;
                 font-size: 13px;
             }
         }
