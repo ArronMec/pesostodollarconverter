@@ -15,7 +15,7 @@ This guide will help you deploy the Privacy Policy and Terms of Service pages to
 
 1. Go to [vercel.com](https://vercel.com) and sign up/login with your GitHub account
 2. Click "Add New Project"
-3. Import your GitHub repository (`pesopro-curreny-converter`)
+3. Import your GitHub repository (`pesostodollarconverter`)
 4. Configure the project:
    - **Framework Preset**: Other
    - **Root Directory**: `./` (leave as default)
