@@ -86,16 +86,12 @@ const App: React.FC = () => {
             </a>
             <a 
               href="https://pesopro-curreny-converter.vercel.app/privacy-policy.html"
-              target="_blank"
-              rel="noopener noreferrer"
               className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
             >
               Privacy Policy
             </a>
             <a 
               href="https://pesopro-curreny-converter.vercel.app/terms-of-service.html"
-              target="_blank"
-              rel="noopener noreferrer"
               className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
             >
               Terms of Service
