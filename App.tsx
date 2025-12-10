@@ -17,7 +17,6 @@ const App: React.FC = () => {
   const [showDetails, setShowDetails] = useState(false);
 
   const init = useCallback(async () => {
-    setLoading(true);
     // Caching strategy: Store rate for 4 hours to minimize API hits.
     const cached = localStorage.getItem('pesoPro_rate');
     const cachedTime = localStorage.getItem('pesoPro_time');
@@ -25,6 +24,7 @@ const App: React.FC = () => {
     const now = new Date().getTime();
     const fourHours = 4 * 60 * 60 * 1000;
 
+    // Load cached rate immediately to prevent glitch
     if (cached && cachedTime && (now - parseInt(cachedTime) < fourHours)) {
         setState(prev => ({
             ...prev,
@@ -32,7 +32,28 @@ const App: React.FC = () => {
             lastUpdated: new Date(parseInt(cachedTime)).toISOString()
         }));
         setLoading(false);
+        // Fetch fresh in background for next time
+        fetchExchangeRates().then(data => {
+            if (data && data.rates && data.rates.MXN) {
+                setState(prev => ({
+                    ...prev,
+                    rate: data.rates.MXN,
+                    lastUpdated: data.time_last_update_utc
+                }));
+                localStorage.setItem('pesoPro_rate', data.rates.MXN.toString());
+                localStorage.setItem('pesoPro_time', now.toString());
+            }
+        });
     } else {
+        // Use cached rate even if expired, then update
+        if (cached) {
+            setState(prev => ({
+                ...prev,
+                rate: parseFloat(cached),
+                lastUpdated: cachedTime ? new Date(parseInt(cachedTime)).toISOString() : null
+            }));
+            setLoading(false);
+        }
         // Fetch fresh
         const data = await fetchExchangeRates();
         if (data && data.rates && data.rates.MXN) {
@@ -56,10 +77,17 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-slate-950 text-slate-100">
+      {/* Header */}
+      <header className="w-full bg-slate-950 border-b border-slate-800">
+        <div className="max-w-md mx-auto px-4 py-4">
+          <h1 className="text-2xl font-bold text-white text-center">Pesos to Dollar Converter</h1>
+        </div>
+      </header>
+
       <main className="flex-grow flex flex-col items-center px-4 pb-6 w-full max-w-md mx-auto gap-6">
           
           {/* Navigation Bar - Top of Page */}
-          <nav className="flex items-center justify-center gap-2 pt-6 pb-4 w-full px-4">
+          <nav className="flex items-center justify-center gap-2 pt-4 pb-4 w-full px-4">
             <a 
               href="https://pesopro-curreny-converter.vercel.app"
               className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
@@ -82,13 +110,15 @@ const App: React.FC = () => {
 
           {/* Main Converter Card */}
           <div className="w-full flex-none">
-            {loading || !state.rate ? (
-                <div className="h-96 w-full bg-slate-900 rounded-3xl animate-pulse shadow-xl border border-slate-800"></div>
-            ) : (
+            {state.rate ? (
                 <Converter 
                     rate={state.rate} 
                     onAmountChange={() => {}}
                 />
+            ) : (
+                <div className="h-96 w-full bg-slate-900 rounded-3xl shadow-xl border border-slate-800 flex items-center justify-center">
+                    <p className="text-slate-400">Loading exchange rate...</p>
+                </div>
             )}
           </div>
 
