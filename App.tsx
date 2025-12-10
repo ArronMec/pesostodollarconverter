@@ -77,17 +77,10 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-slate-950 text-slate-100">
-      {/* Header */}
-      <header className="w-full bg-slate-950 border-b border-slate-800">
-        <div className="max-w-md mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold text-white text-center">Pesos to Dollar Currency Converter</h1>
-        </div>
-      </header>
-
-      <main className="flex-grow flex flex-col items-center px-4 pb-6 w-full max-w-md mx-auto gap-6">
+      <main className="flex-grow flex flex-col items-center px-4 pb-6 w-full max-w-md mx-auto gap-4">
           
           {/* Navigation Bar - Top of Page */}
-          <nav className="flex items-center justify-center gap-2 pt-4 pb-4 w-full px-4">
+          <nav className="flex items-center justify-center gap-2 pt-6 pb-2 w-full px-4">
             <a 
               href="https://pesopro-curreny-converter.vercel.app"
               className="px-4 py-2 text-sm text-slate-300 hover:text-white transition-colors font-medium rounded-md bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700"
@@ -107,6 +100,9 @@ const App: React.FC = () => {
               Terms of Service
             </a>
           </nav>
+
+          {/* Title */}
+          <h1 className="text-2xl font-bold text-white text-center">Pesos to Dollar Currency Converter</h1>
 
           {/* Main Converter Card */}
           <div className="w-full flex-none">
