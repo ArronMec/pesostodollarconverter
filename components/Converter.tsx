@@ -123,13 +123,6 @@ export const Converter: React.FC<ConverterProps> = ({ rate, onAmountChange }) =>
             </span>
         </div>
 
-        {/* Welcome Message */}
-        <div className="text-center mb-4 pt-8">
-            <h1 className="text-xl font-semibold text-white" style={{ color: '#ffffff', display: 'block' }}>
-                Welcome to Pesos to Dollar Currency Converter
-            </h1>
-        </div>
-
         {/* MXN Row */}
         <div 
             onClick={() => handleCurrencyChange('MXN')}
