@@ -99,7 +99,7 @@ const App: React.FC = () => {
           </nav>
 
           {/* Welcome Message */}
-          <h1 className="text-2xl font-semibold text-slate-100 text-center px-4">
+          <h1 className="text-2xl font-semibold text-white text-center px-4 mt-2 mb-2">
             Welcome to Pesos to Dollar Currency Converter
           </h1>
 
